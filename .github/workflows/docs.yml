@@ -29,8 +29,12 @@ jobs:
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install .
+        python3 -m pip install -U "sphinx>=5.3"
+
+    - name: Bug report
+      run: |
+        python3 -m sphinx --bug-report
 
     - name: Docs
       run: |
-        python3 -m pip install sphinx
         python3 -m sphinx.cmd.build --builder html --fail-on-warning --keep-going docs _build/html
