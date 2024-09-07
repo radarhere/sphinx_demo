@@ -1,4 +1,4 @@
-from io import BytesIO
+import io
 
-class AppendingTiffWriter(BytesIO):
+class AppendingTiffWriter(io.BytesIO):
     pass
