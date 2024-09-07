@@ -1,0 +1,36 @@
+name: Docs
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FORCE_COLOR: 1
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    name: Docs
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.x"
+
+    - name: Build
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install .
+
+    - name: Docs
+      run: |
+        python3 -m pip install sphinx
+        python3 -m sphinx.cmd.build --builder html --fail-on-warning --keep-going docs _build/html

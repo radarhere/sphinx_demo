@@ -1,0 +1,10 @@
+[project]
+name = "demo"
+version = "1.0"
+
+[tool.setuptools]
+packages = [
+  "PIL",
+]
+include-package-data = true
+package-dir = { "" = "src" }
